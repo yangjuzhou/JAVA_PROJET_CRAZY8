@@ -3,7 +3,7 @@ package fr.utt.sit.lo02.projet.eights;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AIPlayer extends Player{
+public class AIPlayer extends Player implements Play{
 	AIPlayer(){
 		super("AI");
 	}

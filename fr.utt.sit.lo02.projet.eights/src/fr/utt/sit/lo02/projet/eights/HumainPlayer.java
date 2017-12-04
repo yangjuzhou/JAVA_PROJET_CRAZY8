@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class HumainPlayer extends Player{
+public class HumainPlayer extends Player implements Play{
 	List<Card> possibleList = new ArrayList<Card>();
 	List<Integer> m = new ArrayList<Integer>();
 	Scanner sc = new Scanner(System.in);

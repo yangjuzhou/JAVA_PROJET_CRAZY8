@@ -17,7 +17,9 @@ public class Card {
 	public String getSuit() {
 		return suit;
 	}
-	
+	public void effect() {
+		
+	}
 	public boolean equals(Object obj) {
 		if(this == obj)
 			return true;
@@ -40,19 +42,4 @@ public class Card {
 			return false;
 		return true;
 	}
-	/*public int compareTo(Card that) {
-		if(this.suit<that.suit) {
-			return -1;
-		}
-		if(this.suit>that.suit) {
-			return 1;
-		}
-		if(this.rank<that.rank) {
-			return -1;
-		}
-		if(this.rank<that.rank) {
-			return -1;
-		}
-		return 0;
-	}*/
 }
