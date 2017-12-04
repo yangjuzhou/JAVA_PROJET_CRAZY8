@@ -45,11 +45,11 @@ public class Player {
 		this.id = id;
 	}
 	
-	public void PlayCard(Player player_index, DiscardPile discard) {
+	public void PlayCard(Player player_index, CardCollection cards) {
 		
 	}
 	
-	public void DrawCard(Player player_index, Cards cards, DiscardPile discard) {
+	public void DrawCard(Player player_index, CardCollection cards) {
 		
 	}
 }
