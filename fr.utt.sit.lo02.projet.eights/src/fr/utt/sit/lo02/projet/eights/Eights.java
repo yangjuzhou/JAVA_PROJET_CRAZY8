@@ -17,7 +17,7 @@ public class Eights {
 		boolean ready = true;
 		do {
 			try {
-				System.out.print("Set a number of the humain player:");
+				System.out.print("Set a number of the humain player(0-2):");
 				this.nb_humainplayer=sc.nextInt();
 				ready = true;
 			}catch(Exception e) {
@@ -25,7 +25,7 @@ public class Eights {
 				ready = false;
 				sc.nextLine();
 			}
-		}while(ready==false);
+		}while(ready==false || this.nb_humainplayer>2 || this.nb_humainplayer<0);
 		for(int i=0;i<this.nb_humainplayer;i++) {
 			System.out.print("please enter name for player "+(i+1)+":");
 			HumainPlayer humainplayer = new HumainPlayer();
@@ -38,7 +38,7 @@ public class Eights {
 		boolean ready1 = true;
 		do {
 			try {
-				System.out.print("Set a number of the ai player:");
+				System.out.print("Set a number of the ai player(1-3):");
 				this.nb_aiplayer=sc.nextInt();
 				ready1 = true;
 			}catch(Exception e) {
@@ -46,7 +46,7 @@ public class Eights {
 				ready1 = false;
 				sc.nextLine();
 			}
-		}while(ready1==false);
+		}while(ready1==false || this.nb_aiplayer<1 || this.nb_aiplayer>3);
 		for(int i=0;i<this.nb_aiplayer;i++) {
 			AIPlayer aiplayer = new AIPlayer();
 			this.player.add(aiplayer);

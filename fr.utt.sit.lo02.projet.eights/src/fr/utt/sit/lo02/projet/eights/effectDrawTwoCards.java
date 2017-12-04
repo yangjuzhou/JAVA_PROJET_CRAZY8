@@ -1,0 +1,5 @@
+package fr.utt.sit.lo02.projet.eights;
+
+public class effectDrawTwoCards implements effect{
+
+}

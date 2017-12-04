@@ -67,7 +67,17 @@ public class HumainPlayer extends Player implements Play{
 			for(int i=0;i<possibleList.size();i++) {
 				System.out.println(i + "---->" + possibleList.get(i).getRank() + " " + possibleList.get(i).getSuit());
 			}
-			s=sc.nextInt();
+			boolean ready = true;
+			do {
+				try {
+					s=sc.nextInt();
+					ready = true;
+				}catch(Exception e) {
+					System.out.print("Please enter an integer number:");
+					ready = false;
+					sc.nextLine();
+				}
+			}while(ready==false);
 			cards.setDiscards(getPossibleList().get(s));
 			player_index.popHandCards(m.get(s));
 			System.out.println(player_index.getName() + " plays " + possibleList.get(s).getRank() + possibleList.get(s).getSuit());
