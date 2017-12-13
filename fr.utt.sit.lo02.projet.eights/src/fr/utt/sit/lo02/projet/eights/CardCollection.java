@@ -18,6 +18,9 @@ public class CardCollection {
 			for(int j=1;j<rank.length;j++) {
 				drawpile.add(new Card(suit[i],rank[j]));
 			}
+//		for(int i=0;i<2;i++) {
+//			drawpile.add(new Card("", "Joker"));
+//		}
 		System.out.println("----------Creation Cards with success----------");	
 	}
 	

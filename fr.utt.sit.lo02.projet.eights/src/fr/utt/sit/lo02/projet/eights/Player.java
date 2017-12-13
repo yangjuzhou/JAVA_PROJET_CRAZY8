@@ -7,11 +7,11 @@ import java.util.Scanner;
 public class Player {
 	private int id;
 	private String name;
-	
+	private Scanner sc;
 	private List<Card> handcards = new ArrayList<Card>();
 	
 	public Player() {
-		Scanner sc = new Scanner(System.in);
+		sc = new Scanner(System.in);
 		this.name=sc.next();
 	}
 	public Player(String ai) {
@@ -28,7 +28,7 @@ public class Player {
 	public void popHandCards(int index) {
 		handcards.remove(index);
 	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -45,11 +45,17 @@ public class Player {
 		this.id = id;
 	}
 	
-	public void PlayCard(Player player_index, CardCollection cards) {
+	public void PlayCard(Player player_index, CardCollection cards, Game game) {
 		
 	}
 	
-	public void DrawCard(Player player_index, CardCollection cards) {
+	public void DrawCard(CardCollection cards) {
+		setHandCards(cards.getDrawPile().get(0));
+		System.out.println(getName() + " draws " + cards.getDrawPile().get(0).getRank() + cards.getDrawPile().get(0).getSuit());
+		cards.popCards(cards.getDrawPile().get(0));
+	}
+	
+	public void SecondChance(Player player_index, CardCollection cards, Game game) {
 		
 	}
 }

@@ -2,7 +2,7 @@ package fr.utt.sit.lo02.projet.eights;
 
 import java.util.Comparator;
 
-public class ComparatorCard implements Comparator<Card>{
+public class ValueOfCard implements Comparator<Card>{
 
 	@Override
 	public int compare(Card c1, Card c2) {

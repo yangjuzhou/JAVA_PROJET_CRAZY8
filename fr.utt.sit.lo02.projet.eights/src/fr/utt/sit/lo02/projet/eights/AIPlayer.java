@@ -1,49 +1,29 @@
 package fr.utt.sit.lo02.projet.eights;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class AIPlayer extends Player implements Play{
-	AIPlayer(){
-		super("AI");
+	AIPlayer(int ID){
+		super("AI "+ID);
 	}
-	List<Card> possibleList = new ArrayList<Card>();
-	List<Integer> m = new ArrayList<Integer>();
-	public List<Card> getPossibleList(){
-		return possibleList;
+	TemporalList pl = new TemporalList();
+	public void PlayCard(Player player_index, CardCollection cards, Game game) {
+		pl.PossibleListCard(player_index,cards);
+		cards.setDiscards(pl.getPossibleList().get(0));
+		player_index.popHandCards(pl.m.get(0));
+		System.out.println(player_index.getName() + " plays " + pl.possibleList.get(0).getRank() + pl.possibleList.get(0).getSuit());
+		pl.possibleList.get(0).applyEffect(game);
 	}
-	public void PlayCard(Player player_index, CardCollection cards) {
-		possibleList.clear();
-		m.clear();
-		for(int i=0;i<player_index.getHandCards().size();i++) {
-			if(player_index.getHandCards().get(i).getRank() == cards.getDiscards().get(0).getRank() || player_index.getHandCards().get(i).getSuit() == cards.getDiscards().get(0).getSuit()) {
-				possibleList.add(player_index.getHandCards().get(i));
-				m.add(i);
-			}
+
+	public void SecondChance(Player player_index, CardCollection cards, Game game) {
+		DrawCard(cards);
+		pl.PossibleListCard(player_index,cards);
+		if(pl.m.size()>0) {
+			cards.setDiscards(pl.getPossibleList().get(0));
+			player_index.popHandCards(pl.m.get(0));
+			System.out.println(player_index.getName() + " plays " + pl.possibleList.get(0).getRank() + pl.possibleList.get(0).getSuit());
+			pl.possibleList.get(0).applyEffect(game);
 		}
-		cards.setDiscards(getPossibleList().get(0));
-		player_index.popHandCards(m.get(0));
-		System.out.println(player_index.getName() + " plays " + possibleList.get(0).getRank() + possibleList.get(0).getSuit());
-	}
-	
-	public void DrawCard(Player player_index, CardCollection cards) {
-		player_index.setHandCards(cards.getDrawPile().get(0));
-		System.out.println(player_index.getName() + " draws " + cards.getDrawPile().get(0).getRank() + cards.getDrawPile().get(0).getSuit());
-		cards.popCards(cards.getDrawPile().get(0));
-		possibleList.clear();
-		m.clear();
-		for(int i=0;i<player_index.getHandCards().size();i++) {
-			if(player_index.getHandCards().get(i).getRank() == cards.getDiscards().get(0).getRank() || player_index.getHandCards().get(i).getSuit() == cards.getDiscards().get(0).getSuit()) {
-				possibleList.add(player_index.getHandCards().get(i));
-				m.add(i);
-			}
+		else {
+				System.out.println(player_index.getName() + " pass this turn!");
 		}
-		if(m.size()>0) {
-			cards.setDiscards(getPossibleList().get(0));
-			player_index.popHandCards(m.get(0));
-			System.out.println(player_index.getName() + " plays " + possibleList.get(0).getRank() + possibleList.get(0).getSuit());
-		}
-		else
-			System.out.println(player_index.getName() + " pass this turn!");
 	}
 }
